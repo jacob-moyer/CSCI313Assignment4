@@ -1,1 +1,20 @@
-<p>add-expense works!</p>
+<h2 class="mb-4">Add Expense</h2>
+<div class="card p-4 shadow-sm" style="max-width: 500px">
+  <div class="mb-3">
+    <label class="form-label">Title</label>
+    <input class="form-control" [(ngModel)]="title" placeholder="e.g. Groceries" />
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Amount ($)</label>
+    <input class="form-control" type="number" [(ngModel)]="amount" min="0" />
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Category</label>
+    <select class="form-select" [(ngModel)]="category">
+      @for (cat of categories; track cat) {
+        <option [value]="cat">{{ cat }}</option>
+      }
+    </select>
+  </div>
+  <button class="btn btn-primary w-100" (click)="onSubmit()">Add Expense</button>
+</div>

@@ -1,1 +1,12 @@
-<p>expense-list works!</p>
+<h2 class="mb-4">All Expenses</h2>
+@if (expenseService.expenses().length === 0) {
+    <p class="text-muted">No expenses <a routerLink="/add-expense">Add an expense</a></p>
+} else {
+    <div class="row g-3">
+        @for (expense of expenseService.expenses(); track expense.id) {
+            <div class="col-md-6">
+                <app-expense-item [expense]="expense"/>
+            </div>
+        }
+    </div>
+}
