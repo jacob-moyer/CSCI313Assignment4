@@ -16,9 +16,6 @@ export class ExpenseItem {
   expenseService = inject(ExpenseService);
   router = inject(Router);
 
-  isHighExpense() {
-    return this.expense.amount > 500;
-  }
 
   categoryColor() {
     const colors: Record<string, string> = {

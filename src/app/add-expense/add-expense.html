@@ -1,20 +1,36 @@
-<h2 class="mb-4">Add Expense</h2>
-<div class="card p-4 shadow-sm" style="max-width: 500px">
-  <div class="mb-3">
-    <label class="form-label">Title</label>
-    <input class="form-control" [(ngModel)]="title" placeholder="e.g. Groceries" />
+<div class="container mt-4 w-50">
+  <div class="card shadow-sm">
+    <h2 class="card-title text-center mb-4">Add Expense</h2>
+
+    <div class="card-body">
+      <label class="form-label">Expense Title</label>
+      <input
+        class="form-control ng-untouched ng-pristine ng-valid"
+        type="text"
+        [(ngModel)]="title"
+        placeholder="Enter expense title"
+      />
+    </div>
+    <div class="card-body">
+      <label class="form-label">Amount ($)</label>
+      <input
+        class="form-control ng-untouched ng-pristine ng-valid"
+        type="number"
+        [(ngModel)]="amount"
+        min="0"
+      />
+    </div>
+    <div class="card-body">
+      <label class="form-label">Category</label>
+      <select class="form-select ng-touched ng-pristine ng-valid" [(ngModel)]="category">
+        <option disabled selected>Select category</option>
+        @for (cat of getcategories(); track cat) {
+          <option [value]="cat">{{ cat }}</option>
+        }
+      </select>
+    </div>
+    <div class="d-grid">
+      <button class="btn btn-primary" (click)="onSubmit()">Add Expense</button>
+    </div>
   </div>
-  <div class="mb-3">
-    <label class="form-label">Amount ($)</label>
-    <input class="form-control" type="number" [(ngModel)]="amount" min="0" />
-  </div>
-  <div class="mb-3">
-    <label class="form-label">Category</label>
-    <select class="form-select" [(ngModel)]="category">
-      @for (cat of categories; track cat) {
-        <option [value]="cat">{{ cat }}</option>
-      }
-    </select>
-  </div>
-  <button class="btn btn-primary w-100" (click)="onSubmit()">Add Expense</button>
 </div>

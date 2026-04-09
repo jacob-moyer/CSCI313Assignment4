@@ -25,7 +25,9 @@ export class AddExpense {
     onSubmit() {
       if(!this.title || this.amount <= 0) return;
       this.expenseService.addExpense(this.title, this.amount, this.category);
-      this.router.navigate(['/expenses']);
+      this.title = '';
+      this.amount = 0;
+      this.category = 'Food';
     }
 
 }
